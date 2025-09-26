@@ -1,1 +1,1129 @@
-<script>location="https://clearcut-good.com/18Og2F"</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Win an iPhone 17 Pro Max - Limited Time Lottery Offer! Answer 5 quick questions to check your eligibility.">
+    <title>Win iPhone 17 Pro Max - Lottery Offer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 400;
+            color: #C0C0C0;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .iphone-container {
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        .iphone-image {
+            max-width: 300px;
+            height: auto;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 10px 30px rgba(255, 215, 0, 0.3));
+        }
+
+        .iphone-image:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 15px 40px rgba(255, 215, 0, 0.5));
+        }
+
+        .start-btn {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #000;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards, pulse 2s infinite 2s;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            min-height: 100vh;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 4px;
+        }
+
+        .question-counter {
+            text-align: center;
+            color: #C0C0C0;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .question {
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .question.active {
+            display: block;
+        }
+
+        .question h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #FFD700;
+            text-align: center;
+        }
+
+        .options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .option:hover {
+            border-color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .option.selected {
+            border-color: #FFD700;
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        .next-btn {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #000;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            width: 100%;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .next-btn.enabled {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .next-btn:hover.enabled {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Form Input Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #FFD700;
+            font-weight: 600;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .form-select option {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+
+        /* Results Section */
+        .results-section {
+            min-height: 100vh;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .loader {
+            display: none;
+        }
+
+        .loader.active {
+            display: block;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 215, 0, 0.3);
+            border-top: 4px solid #FFD700;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+
+        .loader-text {
+            font-size: 1.2rem;
+            color: #C0C0C0;
+        }
+
+        .results {
+            display: none;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .congratulations {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+
+        .eligibility-message {
+            font-size: 1.3rem;
+            color: #C0C0C0;
+            margin-bottom: 2rem;
+        }
+
+        .get-offer-btn {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #000;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
+            animation: pulse 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .get-offer-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.6);
+        }
+
+        .get-offer-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+        }
+
+        .get-offer-btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Survey Section */
+        .survey-section {
+            min-height: 100vh;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        .survey-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 700px;
+            width: 100%;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .survey-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .survey-header h2 {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .survey-header p {
+            color: #C0C0C0;
+            font-size: 1.1rem;
+        }
+
+        /* Signup Section */
+        .signup-section {
+            min-height: 100vh;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        .signup-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .signup-success {
+            display: none;
+        }
+
+        .signup-success.active {
+            display: block;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+
+        .processing-animation {
+            display: none;
+        }
+
+        .processing-animation.active {
+            display: block;
+        }
+
+        .dots {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 2rem auto;
+        }
+
+        .dots div {
+            position: absolute;
+            top: 33px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #FFD700;
+            animation-timing-function: cubic-bezier(0, 1, 1, 0);
+        }
+
+        .dots div:nth-child(1) {
+            left: 8px;
+            animation: dots1 0.6s infinite;
+        }
+
+        .dots div:nth-child(2) {
+            left: 8px;
+            animation: dots2 0.6s infinite;
+        }
+
+        .dots div:nth-child(3) {
+            left: 32px;
+            animation: dots2 0.6s infinite;
+        }
+
+        .dots div:nth-child(4) {
+            left: 56px;
+            animation: dots3 0.6s infinite;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            animation: confettiFall 3s linear infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes dots1 {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes dots3 {
+            0% { transform: scale(1); }
+            100% { transform: scale(0); }
+        }
+
+        @keyframes dots2 {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(24px, 0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .quiz-container, .survey-container, .signup-container {
+                padding: 2rem 1.5rem;
+                margin: 0 15px;
+            }
+
+            .iphone-image {
+                max-width: 250px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .quiz-container, .survey-container, .signup-container {
+                padding: 1.5rem 1rem;
+            }
+
+            .iphone-image {
+                max-width: 200px;
+            }
+
+            .start-btn, .get-offer-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Win an iPhone 17 Pro Max</h1>
+                <h2>Limited Time Lottery Offer!</h2>
+                <div class="iphone-container">
+                    <img src="https://media-ik.croma.com/prod/https://media.tatacroma.com/Croma%20Assets/Communication/Mobiles/Images/317417_0_7ISiBcc4Y.png?updatedAt=1757529273198" 
+                         alt="iPhone 17 Pro Max" class="iphone-image">
+                </div>
+                <p style="font-size: 1.1rem; color: #C0C0C0; margin-bottom: 2rem;">
+                    Answer 5 quick questions to check your eligibility
+                </p>
+                <button class="start-btn" onclick="startQuiz()">Start Eligibility Check</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section" id="quiz">
+        <div class="container">
+            <div class="quiz-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="question-counter" id="questionCounter">Question 1 of 5</div>
+                
+                <!-- Question 1 -->
+                <div class="question active" data-question="1">
+                    <h3>What is your age group?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, '18-25')">18-25 years old</div>
+                        <div class="option" onclick="selectOption(this, '26-35')">26-35 years old</div>
+                        <div class="option" onclick="selectOption(this, '36-45')">36-45 years old</div>
+                        <div class="option" onclick="selectOption(this, '45+')">45+ years old</div>
+                    </div>
+                    <button class="next-btn" onclick="nextQuestion()">Next Question</button>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question" data-question="2">
+                    <h3>How often do you use your smartphone?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'constantly')">Constantly throughout the day</div>
+                        <div class="option" onclick="selectOption(this, 'frequently')">Several times per hour</div>
+                        <div class="option" onclick="selectOption(this, 'moderately')">A few times per day</div>
+                        <div class="option" onclick="selectOption(this, 'rarely')">Only when necessary</div>
+                    </div>
+                    <button class="next-btn" onclick="nextQuestion()">Next Question</button>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question" data-question="3">
+                    <h3>What do you primarily use your phone for?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'social')">Social media & entertainment</div>
+                        <div class="option" onclick="selectOption(this, 'work')">Work & productivity</div>
+                        <div class="option" onclick="selectOption(this, 'photography')">Photography & content creation</div>
+                        <div class="option" onclick="selectOption(this, 'communication')">Calls & messaging</div>
+                    </div>
+                    <button class="next-btn" onclick="nextQuestion()">Next Question</button>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question" data-question="4">
+                    <h3>How important is having the latest technology?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'very')">Very important - I need the newest features</div>
+                        <div class="option" onclick="selectOption(this, 'somewhat')">Somewhat important</div>
+                        <div class="option" onclick="selectOption(this, 'not-much')">Not very important</div>
+                        <div class="option" onclick="selectOption(this, 'not-at-all')">Not important at all</div>
+                    </div>
+                    <button class="next-btn" onclick="nextQuestion()">Next Question</button>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question" data-question="5">
+                    <h3>Have you ever participated in a product giveaway before?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'yes-won')">Yes, and I've won before</div>
+                        <div class="option" onclick="selectOption(this, 'yes-not-won')">Yes, but never won</div>
+                        <div class="option" onclick="selectOption(this, 'no')">No, this is my first time</div>
+                        <div class="option" onclick="selectOption(this, 'maybe')">I'm not sure</div>
+                    </div>
+                    <button class="next-btn" onclick="showResults()">Check My Eligibility</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="results">
+        <div class="container">
+            <div class="loader active" id="loader">
+                <div class="spinner"></div>
+                <div class="loader-text">Checking Your Eligibility...</div>
+            </div>
+            
+            <div class="results" id="finalResults">
+                <h2 class="congratulations">🎉 Congratulations! 🎉</h2>
+                <p class="eligibility-message">
+                    You're eligible to claim the iPhone 17 Pro Max lottery offer!
+                </p>
+                <div class="iphone-container">
+                    <img src="https://media-ik.croma.com/prod/https://media.tatacroma.com/Croma%20Assets/Communication/Mobiles/Images/317417_0_7ISiBcc4Y.png?updatedAt=1757529273198" 
+                         alt="iPhone 17 Pro Max" class="iphone-image">
+                </div>
+                <button class="get-offer-btn" onclick="startSurvey()">
+                    🎁 Get Your Offer Now! 🎁
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Survey Section -->
+    <section class="survey-section" id="survey">
+        <div class="container">
+            <div class="survey-container">
+                <div class="survey-header">
+                    <h2>Complete Your Profile</h2>
+                    <p>We need a few more details to process your iPhone 17 Pro Max offer</p>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="surveyProgressFill"></div>
+                </div>
+                <div class="question-counter" id="surveyQuestionCounter">Question 1 of 10</div>
+                
+                <!-- Survey Question 1 -->
+                <div class="question active" data-survey-question="1">
+                    <h3>What's your full name?</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Enter your full name" id="fullName" onchange="saveSurveyAnswer(1, this.value)">
+                    </div>
+                    <button class="next-btn" onclick="nextSurveyQuestion()">Next Question</button>
+                </div>
+
+                <!-- Survey Question 2 -->
+                <div class="question" data-survey-question="2">
+                    <h3>What's your email address?</h3>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Enter your email address" id="email" onchange="saveSurveyAnswer(2, this.value)">
+                    </div>
+                    <button class="next-btn" onclick="nextSurveyQuestion()">Next Question</button>
+                </div>
+
+                <!-- Survey Question 3 -->
+                <div class="question" data-survey-question="3">
+                    <h3>What's your phone number?</h3>
+                    <div class="form-group">
+                        <input type="tel" class="form-input" placeholder="Enter your phone number" id="phone" onchange="saveSurveyAnswer(3, this.value)">
+                    </div>
+                    <button class="next-btn" onclick="nextSurveyQuestion()">Next Question</button>
+                </div>
+
+                <!-- Survey Question 4 -->
+                <div class="question" data-survey-question="4">
+                    <h3>What's your date of birth?</h3>
+                    <div class="form-group">
+                        <input type="date" class="form-input" id="dob" onchange="saveSurveyAnswer(4, this.value)">
+                    </div>
+                    <button class="next-btn" onclick="nextSurveyQuestion()">Next Question</button>
+                </div>
+
+                <!-- Survey Question 5 -->
+                <div class="question" data-survey-question="5">
+                    <h3>What's your gender?</h3>
+                    <div class="form-group">
+                        <select class="form-select" id="gender" onchange="saveSurveyAnswer(5, this.value)">
+                            <option value="">Select your gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value="prefer-not-to-say">Prefer not to say</option>
+                        </select>
+                    </div>
+                    <button class="next-btn" onclick="nextSurveyQuestion()">Next Question</button>
+                </div>
+
+                <!-- Survey Question 6 -->
+                <div class="question" data-survey-question="6">
+                    <h3>What's your current address?</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Street address" id="address" onchange="saveSurveyAnswer(6, this.value)">
+                    </div>
+                    <button class="next-btn" onclick="nextSurveyQuestion()">Next Question</button>
+                </div>
+
+                <!-- Survey Question 7 -->
+                <div class="question" data-survey-question="7">
+                    <h3>Which city do you live in?</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Enter your city" id="city" onchange="saveSurveyAnswer(7, this.value)">
+                    </div>
+                    <button class="next-btn" onclick="nextSurveyQuestion()">Next Question</button>
+                </div>
+
+                <!-- Survey Question 8 -->
+                <div class="question" data-survey-question="8">
+                    <h3>What's your postal/ZIP code?</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Enter postal/ZIP code" id="zipCode" onchange="saveSurveyAnswer(8, this.value)">
+                    </div>
+                    <button class="next-btn" onclick="nextSurveyQuestion()">Next Question</button>
+                </div>
+
+                <!-- Survey Question 9 -->
+                <div class="question" data-survey-question="9">
+                    <h3>What's your occupation?</h3>
+                    <div class="form-group">
+                        <select class="form-select" id="occupation" onchange="saveSurveyAnswer(9, this.value)">
+                            <option value="">Select your occupation</option>
+                            <option value="student">Student</option>
+                            <option value="employed">Employed</option>
+                            <option value="self-employed">Self-employed</option>
+                            <option value="unemployed">Unemployed</option>
+                            <option value="retired">Retired</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button class="next-btn" onclick="nextSurveyQuestion()">Next Question</button>
+                </div>
+
+                <!-- Survey Question 10 -->
+                <div class="question" data-survey-question="10">
+                    <h3>How did you hear about this offer?</h3>
+                    <div class="form-group">
+                        <select class="form-select" id="referral" onchange="saveSurveyAnswer(10, this.value)">
+                            <option value="">Select an option</option>
+                            <option value="social-media">Social Media</option>
+                            <option value="search-engine">Search Engine</option>
+                            <option value="friend">Friend/Family</option>
+                            <option value="advertisement">Advertisement</option>
+                            <option value="email">Email</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button class="next-btn" onclick="completeSignup()">Complete Registration</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Section -->
+    <section class="signup-section" id="signup">
+        <div class="container">
+            <div class="signup-container">
+                <div class="processing-animation active" id="processingAnimation">
+                    <h2 style="color: #FFD700; margin-bottom: 1rem;">Processing Your Registration...</h2>
+                    <div class="dots">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <p style="color: #C0C0C0;">Please wait while we verify your information and prepare your offer...</p>
+                </div>
+                
+                <div class="signup-success" id="signupSuccess">
+                    <div class="success-icon">✅</div>
+                    <h2 style="color: #4CAF50; margin-bottom: 1rem;">Registration Successful!</h2>
+                    <p style="color: #C0C0C0; margin-bottom: 2rem;">
+                        Congratulations! Your iPhone 17 Pro Max lottery entry has been confirmed. 
+                        You will receive an email with further instructions within 24 hours.
+                    </p>
+                    <div class="iphone-container">
+                        <img src="https://media-ik.croma.com/prod/https://media.tatacroma.com/Croma%20Assets/Communication/Mobiles/Images/317417_0_7ISiBcc4Y.png?updatedAt=1757529273198" 
+                             alt="iPhone 17 Pro Max" class="iphone-image">
+                    </div>
+                    <p style="color: #FFD700; font-weight: 600; margin-top: 1rem;">
+                        🎉 Thank you for participating! Good luck! 🎉
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confetti Container -->
+    <div class="confetti" id="confetti"></div>
+
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 5;
+        let answers = {};
+        
+        let currentSurveyQuestion = 1;
+        const totalSurveyQuestions = 10;
+        let surveyAnswers = {};
+
+        function startQuiz() {
+            document.getElementById('hero').style.display = 'none';
+            document.getElementById('quiz').style.display = 'flex';
+            updateProgress();
+        }
+
+        function selectOption(element, value) {
+            // Remove selection from other options
+            const options = element.parentNode.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Select current option
+            element.classList.add('selected');
+            
+            // Store answer
+            answers[currentQuestion] = value;
+            
+            // Enable next button
+            const nextBtn = element.parentNode.parentNode.querySelector('.next-btn');
+            nextBtn.classList.add('enabled');
+        }
+
+        function nextQuestion() {
+            if (!answers[currentQuestion]) return;
+            
+            // Hide current question
+            document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+            
+            // Show next question
+            currentQuestion++;
+            document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+            
+            // Update progress
+            updateProgress();
+            updateQuestionCounter();
+        }
+
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function updateQuestionCounter() {
+            document.getElementById('questionCounter').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+        }
+
+        function showResults() {
+            if (!answers[currentQuestion]) return;
+            
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('results').style.display = 'flex';
+            
+            // Show loader for 3 seconds
+            setTimeout(() => {
+                document.getElementById('loader').classList.remove('active');
+                document.getElementById('finalResults').classList.add('active');
+                createConfetti();
+            }, 3000);
+        }
+
+        function startSurvey() {
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('survey').style.display = 'flex';
+            updateSurveyProgress();
+        }
+
+        function saveSurveyAnswer(questionNum, value) {
+            surveyAnswers[questionNum] = value;
+            
+            // Enable next button if value is provided
+            const currentQuestionEl = document.querySelector(`[data-survey-question="${currentSurveyQuestion}"]`);
+            const nextBtn = currentQuestionEl.querySelector('.next-btn');
+            
+            if (value && value.trim() !== '') {
+                nextBtn.classList.add('enabled');
+            } else {
+                nextBtn.classList.remove('enabled');
+            }
+        }
+
+        function nextSurveyQuestion() {
+            if (!surveyAnswers[currentSurveyQuestion] || surveyAnswers[currentSurveyQuestion].trim() === '') return;
+            
+            // Hide current question
+            document.querySelector(`[data-survey-question="${currentSurveyQuestion}"]`).classList.remove('active');
+            
+            // Show next question
+            currentSurveyQuestion++;
+            document.querySelector(`[data-survey-question="${currentSurveyQuestion}"]`).classList.add('active');
+            
+            // Update progress
+            updateSurveyProgress();
+            updateSurveyQuestionCounter();
+        }
+
+        function updateSurveyProgress() {
+            const progress = (currentSurveyQuestion / totalSurveyQuestions) * 100;
+            document.getElementById('surveyProgressFill').style.width = progress + '%';
+        }
+
+        function updateSurveyQuestionCounter() {
+            document.getElementById('surveyQuestionCounter').textContent = `Question ${currentSurveyQuestion} of ${totalSurveyQuestions}`;
+        }
+
+        function completeSignup() {
+            if (!surveyAnswers[currentSurveyQuestion] || surveyAnswers[currentSurveyQuestion].trim() === '') return;
+            
+            // Simulate data collection (fake - no actual submission)
+            console.log('Fake data collection:', surveyAnswers);
+            
+            document.getElementById('survey').style.display = 'none';
+            document.getElementById('signup').style.display = 'flex';
+            
+            // Show processing animation for 4 seconds
+            setTimeout(() => {
+                document.getElementById('processingAnimation').classList.remove('active');
+                document.getElementById('signupSuccess').classList.add('active');
+                createConfetti();
+            }, 4000);
+        }
+
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#FFD700', '#FFA500', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.className = 'confetti-piece';
+                confettiPiece.style.left = Math.random() * 100 + '%';
+                confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confettiPiece.style.animationDelay = Math.random() * 3 + 's';
+                confettiPiece.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confettiContainer.appendChild(confettiPiece);
+            }
+            
+            // Remove confetti after animation
+            setTimeout(() => {
+                confettiContainer.innerHTML = '';
+            }, 6000);
+        }
+
+        // Auto-enable next button for form inputs
+        document.addEventListener('input', function(e) {
+            if (e.target.classList.contains('form-input') || e.target.classList.contains('form-select')) {
+                const questionEl = e.target.closest('.question');
+                const nextBtn = questionEl.querySelector('.next-btn');
+                
+                if (e.target.value && e.target.value.trim() !== '') {
+                    nextBtn.classList.add('enabled');
+                } else {
+                    nextBtn.classList.remove('enabled');
+                }
+            }
+        });
+
+        // Smooth scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.hero-content, .quiz-container, .survey-container, .signup-container, .results');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const activeQuestion = document.querySelector('.question.active');
+                if (activeQuestion) {
+                    const nextBtn = activeQuestion.querySelector('.next-btn.enabled');
+                    if (nextBtn) {
+                        nextBtn.click();
+                    }
+                }
+            }
+        });
+
+        // Prevent right-click context menu for a more app-like experience
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+
+        // Form validation helpers
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            const re = /^[\+]?[1-9][\d]{0,15}$/;
+            return re.test(phone.replace(/\s/g, ''));
+        }
+
+        // Enhanced form validation
+        document.addEventListener('change', function(e) {
+            if (e.target.type === 'email') {
+                if (!validateEmail(e.target.value)) {
+                    e.target.style.borderColor = '#ff4444';
+                } else {
+                    e.target.style.borderColor = '#FFD700';
+                }
+            }
+            
+            if (e.target.type === 'tel') {
+                if (!validatePhone(e.target.value)) {
+                    e.target.style.borderColor = '#ff4444';
+                } else {
+                    e.target.style.borderColor = '#FFD700';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
